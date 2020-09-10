@@ -3,10 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
-    <script src="js/script.js"></script>
+    <div class="container">
+      <div class="container__title"><p>Weather App</p></div>
+      <div class="container__notification"></div>
+      <div class="container__weather">
+        <div class="container__icon">
+          <img src="icons/unknown.png" alt="cloud" />
+        </div>
+        <div class="container__value">
+          <p>- &deg;<span>C</span></p>
+        </div>
+        <div class="container__description"><p>-</p></div>
+        <div class="container__location"><p>-</p></div>
+      </div>
+    </div>
+    <script defer src="js/script.js"></script>
+    <script defer>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/cashed_workers.js")
+          .then(function () {
+            console.log("Service Worker Registered");
+          });
+      }
+    </script>
   </body>
 </html>
